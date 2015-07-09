@@ -35,7 +35,7 @@ namespace Util
       /**
       * Enumeration of the allowed types of EnergyEnsemble.
       */
-      enum Type{UNKNOWN, ADIABATIC, ISOTHERMAL};
+      enum Type{UNKNOWN, ADIABATIC, ISOTHERMAL, ANNEAL};
 
       /**
       * Constructor.
@@ -88,9 +88,19 @@ namespace Util
       bool isIsothermal() const;
 
       /**
+      * Is this an Anneal ensemble?
+      */
+      bool isAnneal() const;
+
+      /**
       * Return the temperature.
       */
       double temperature() const;
+
+      /**
+      * Return the temperature.
+      */
+      double dT() const;
 
       /**
       * Return the inverse temperature.
@@ -113,6 +123,18 @@ namespace Util
 
       /// Inverse Temperature 1/(k_B T) (units of inverse energy)
       double beta_;
+
+      /// Beginning Temperature
+      double temperature1_;
+
+      /// Ending Temperature
+      double temperature2_;
+
+      /// Time to reach temperature 2
+      double time2_;
+
+      /// Change in temperature per time step
+      double dT_;
 
       /// Subclass name identifier.
       Type   type_;
@@ -144,6 +166,12 @@ namespace Util
    */
    inline double EnergyEnsemble::temperature() const
    {  return temperature_; }
+ 
+   /*
+   * Return the rate of temperature change.
+   */
+   inline double EnergyEnsemble::dT() const
+   {  return dT_; }
 
    /*
    * Return the inverse temperature.
@@ -162,6 +190,12 @@ namespace Util
    */
    inline bool EnergyEnsemble::isIsothermal() const
    { return (type_ == ISOTHERMAL); }
+
+   /* 
+   * Return true if this is an AnnealEnsemble.
+   */
+   inline bool EnergyEnsemble::isAnneal() const
+   { return (type_ == ANNEAL); }
 
    /**
    * Serialize a EnergyEnsemble::Type enum value.

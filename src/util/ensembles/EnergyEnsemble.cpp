@@ -34,8 +34,8 @@ namespace Util{
    */
    void EnergyEnsemble::setTemperature(double temperature)
    {
-      if (!isIsothermal()) {
-	 UTIL_THROW("Must be an isothermal ensemble");
+      if ((!isIsothermal() && (!isAnneal()))) {
+	 UTIL_THROW("Must be an isothermal or anneal ensemble");
       }
       temperature_ = temperature;
       beta_        = 1.0/temperature;
@@ -51,10 +51,19 @@ namespace Util{
          read<double>(in, "temperature", temperature_);
          beta_ = 1.0/temperature_;
       }
+      if (isAnneal()) {
+         read<double>(in, "temperature1", temperature1_);
+         temperature_ = temperature1_;
+         beta_ = 1.0/temperature_;
+         read<double>(in, "temperature2", temperature2_);
+         read<double>(in, "time2", time2_);
+         dT_ = (temperature2_ - temperature1_)/(time2_);
+      }
    }
 
    /*
    * Load internal state from an archive.
+   * NOTE: Have to fix this for annealing in future
    */
    void EnergyEnsemble::loadParameters(Serializable::IArchive &ar)
    { 
@@ -67,6 +76,7 @@ namespace Util{
 
    /*
    * Save internal state to an archive.
+   * NOTE: Have to fix this for annealing in future
    */
    void EnergyEnsemble::save(Serializable::OArchive &ar)
    { 
@@ -89,6 +99,9 @@ namespace Util{
       } else
       if (buffer == "ISOTHERMAL" || buffer == "isothermal") {
          type = EnergyEnsemble::ISOTHERMAL;
+      } else
+      if (buffer == "ANNEAL" || buffer == "anneal") {
+         type = EnergyEnsemble::ANNEAL;
       } else {
          UTIL_THROW("Invalid EnergyEnsemble::Type value input");
       }
@@ -105,6 +118,9 @@ namespace Util{
       } else
       if (type == EnergyEnsemble::ISOTHERMAL) {
          out << "isothermal";
+      } else
+      if (type == EnergyEnsemble::ANNEAL) {
+         out << "anneal";
       }
       return out;
    }
