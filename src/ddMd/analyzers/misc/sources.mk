@@ -1,5 +1,6 @@
 ddMd_analyzers_misc_=\
-     ddMd/analyzers/misc/OrderParamNucleation.cpp
+     ddMd/analyzers/misc/OrderParamNucleation.cpp\
+     ddMd/analyzers/misc/MaxWallTime.cpp
 
 ifdef INTER_BOND
 ddMd_analyzers_misc_+=\

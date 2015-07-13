@@ -4,6 +4,7 @@ ddMd_integrators_=\
    ddMd/integrators/NveIntegrator.cpp \
    ddMd/integrators/NvtIntegrator.cpp \
    ddMd/integrators/NvtLangevinIntegrator.cpp \
+   ddMd/integrators/NvtLangevinIntegratorAnneal.cpp \
    ddMd/integrators/NptIntegrator.cpp \
    ddMd/integrators/NphIntegrator.cpp \
    ddMd/integrators/IntegratorFactory.cpp
