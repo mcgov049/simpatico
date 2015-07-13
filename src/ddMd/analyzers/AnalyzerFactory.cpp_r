@@ -47,6 +47,7 @@
 
 // Miscellaneous analyzers
 #include "misc/OrderParamNucleation.h"
+#include "misc/MaxWallTime.h"
 #ifdef INTER_BOND
 #include "misc/BondTensorAutoCorr.h"
 #endif
@@ -166,6 +167,9 @@ namespace DdMd
       #endif
       if (className == "OrderParamNucleation") {
          ptr = new OrderParamNucleation(simulation());
+      } else
+      if (className == "MaxWallTime") {
+         ptr = new MaxWallTime(simulation());
       }
       return ptr;
    }

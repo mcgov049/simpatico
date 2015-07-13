@@ -11,6 +11,7 @@
 #include "NveIntegrator.h"
 #include "NvtIntegrator.h"
 #include "NvtLangevinIntegrator.h"
+#include "NvtLangevinIntegratorAnneal.h"
 #include "NptIntegrator.h"
 #include "NphIntegrator.h"
 
@@ -46,6 +47,9 @@ namespace DdMd
       } else
       if (className == "NvtLangevinIntegrator") {
          ptr = new NvtLangevinIntegrator(*simulationPtr_);
+      } else
+      if (className == "NvtLangevinIntegratorAnneal") {
+         ptr = new NvtLangevinIntegratorAnneal(*simulationPtr_);
       } else
       if (className == "NptIntegrator") {
          ptr = new NptIntegrator(*simulationPtr_);
