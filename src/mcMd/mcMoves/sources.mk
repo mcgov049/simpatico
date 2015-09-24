@@ -7,7 +7,7 @@ mcMd_mcMoves_=\
     mcMd/mcMoves/McMoveManager.cpp \
     mcMd/mcMoves/SystemMove.cpp \
     $(mcMd_mcMoves_common_) \
-    $(mcMd_mcMoves_semigrand_) 
+    $(mcMd_mcMoves_semigrand_)
 
 ifdef INTER_BOND
 include $(SRC_DIR)/mcMd/mcMoves/base/sources.mk

@@ -59,6 +59,14 @@ namespace McMd
       * \return Boltzmann weight exp(-beta*energy)
       */
       double boltzmann(double energy);
+
+      /**
+      * Generate a bond length from the boltzamnn distribution.
+      *
+      * Only works for harmonic bonds.
+      * Intended for grand canonical enemble
+      */
+      double genBondDist(double kappa);
   
    private:
  
@@ -98,6 +106,11 @@ namespace McMd
    */
    inline double SystemMove::boltzmann(double energy)
    {  return exp(-isothermalPtr_->beta()*energy); }
-   
+
+   /*
+   * Generate bond from boltzmann distribution.
+   */
+   inline double SystemMove::genBondDist(double kappa)
+   { return random().gaussian()/sqrt(isothermalPtr_->beta()*kappa); } 
 }
 #endif

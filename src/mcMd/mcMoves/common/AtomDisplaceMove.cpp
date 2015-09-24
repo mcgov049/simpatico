@@ -71,10 +71,17 @@ namespace McMd
       Molecule* molPtr;
       Atom*     atomPtr;
       int       iAtom;
+      int       nMol;
 
       incrementNAttempt();
 
       // Choose a molecule and atom at random
+      nMol = system().nMolecule(speciesId_); 
+      if (nMol == 0) 
+      {
+         bool accept = false;
+         return accept;
+      }
       molPtr  = &(system().randomMolecule(speciesId_));
       iAtom   = random().uniformInt(0, molPtr->nAtom());
       atomPtr = &molPtr->atom(iAtom);

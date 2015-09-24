@@ -1,6 +1,7 @@
 mcMd_analyzers_mcSystem_=\
     mcMd/analyzers/mcSystem/McEnergyAverage.cpp \
     mcMd/analyzers/mcSystem/McEnergyOutput.cpp \
+    mcMd/analyzers/mcSystem/McNMolOutput.cpp \
     mcMd/analyzers/mcSystem/McPairEnergyAverage.cpp \
     mcMd/analyzers/mcSystem/McPressureAverage.cpp \
     mcMd/analyzers/mcSystem/McVirialStressTensorAverage.cpp \

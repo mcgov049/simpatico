@@ -4,6 +4,7 @@ mcMd_mcMoves_common_=\
     mcMd/mcMoves/common/HybridMdMove.cpp \
     mcMd/mcMoves/common/HybridNphMdMove.cpp \
     mcMd/mcMoves/common/MdMove.cpp \
+    mcMd/mcMoves/common/DiblockGrandMove.cpp \
     mcMd/mcMoves/common/RigidDisplaceMove.cpp 
 
 mcMd_mcMoves_common_SRCS=\
